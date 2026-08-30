@@ -15,7 +15,16 @@ void preOrder(BiTree T){
     }
     printf("%c",T->data);
     preOrder(T->lchild);
-    preOrder(T->rchild);
+    preOrder(T->rchild); 
+}
+
+void inOrder(BiTree T){
+    if(T==NULL){
+        return ;
+    }
+    preOrder(T->lchild);
+    printf("%c",T->data);
+    preOrder(T->rchild); 
 }
 
 int main(){
