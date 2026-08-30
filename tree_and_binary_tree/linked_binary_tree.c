@@ -27,6 +27,14 @@ void inOrder(BiTree T){
     preOrder(T->rchild); 
 }
 
+void postOrder(BiTree T){
+    if(T==NULL){
+        return ;
+    }
+    preOrder(T->lchild);
+    preOrder(T->rchild); 
+    printf("%c",T->data);
+}
 int main(){
     return 0;
 }
