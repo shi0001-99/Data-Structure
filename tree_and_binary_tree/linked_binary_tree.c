@@ -35,6 +35,7 @@ void postOrder(BiTree T){
     preOrder(T->rchild); 
     printf("%c",T->data);
 }
+
 int main(){
     return 0;
 }
