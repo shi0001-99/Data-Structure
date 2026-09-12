@@ -39,6 +39,7 @@ List initialize(int n){
     return list;
 }
 
+
 void josephus(List*list,int n,int m){
     Node*curr=list->head;
     Node*prev=list->tail;
