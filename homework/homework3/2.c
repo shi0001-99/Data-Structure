@@ -21,6 +21,7 @@ typedef struct List{
     Node* tail;
 }List;
 
+
 List initialize(int n){
     Node* head=(Node*)malloc(sizeof(Node));
     head->data=1;
