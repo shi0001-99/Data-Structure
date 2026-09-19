@@ -77,3 +77,8 @@ typedef struct{
     Node **rhead,**chead;
     int nrow,ncol,nelmt;
 }Matrix;
+
+// 行头指针数组：nrow 个
+M->rhead = (Node**)malloc(nrow * sizeof(Node*));
+// 列头指针数组：ncol 个
+M->chead = (Node**)malloc(ncol * sizeof(Node*));
