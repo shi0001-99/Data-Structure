@@ -74,7 +74,7 @@ typedef struct{
     struct Node* down;
 }Node;
 typedef struct{
-    Node **rhead,**chead;
+    Node **rhead,**chead;//
     int nrow,ncol,nelmt;
 }Matrix;
 
