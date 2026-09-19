@@ -74,7 +74,7 @@ typedef struct{
     struct Node* down;
 }Node;
 typedef struct{
-    Node **rhead,**chead;//
+    Node **rhead,**chead;//指向指针数组的指针，rhead存的是指针数组头元素的地址
     int nrow,ncol,nelmt;
 }Matrix;
 
