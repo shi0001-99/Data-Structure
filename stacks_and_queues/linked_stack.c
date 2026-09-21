@@ -38,3 +38,31 @@ void dec2oct(stack* s,int n){
 }
 
 //括号匹配
+int CheckBrackets(char *str) {
+    Stack S;
+    InitStack(&S);
+    char topChar;
+    for (int i = 0; str[i] != '\0'; i++) {
+        char c = str[i];
+        // 左括号入栈
+        if (c == '(' || c == '[' || c == '{') {
+            if (!Push(&S, c)) {
+                printf("栈溢出\n");
+                return 0;
+            }
+        }
+        // 右括号
+        else if (c == ')' || c == ']' || c == '}') {
+            // 栈空，右括号多了
+            if (StackEmpty(&S)) {
+                return 0;
+            }
+            Pop(&S, &topChar);
+            // 栈顶左括号与当前右括号不匹配
+            if (!Match(topChar, c)) {
+                return 0;
+            }
+        }      
+    }
+    return StackEmpty(&S);
+}
