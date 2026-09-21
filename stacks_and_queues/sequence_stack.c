@@ -1,7 +1,7 @@
 typedef struct{
-    double *base;
-    double *top;
-    int size;
+    double *base;//栈底指针
+    double *top;//栈顶指针
+    int size;//栈最大容量
 }stack;
 
 void initstack(stack* s){
@@ -16,9 +16,11 @@ int Push(stack* s,double e){
     }
 
 }
+
 int Top(stack* s){
     if(s->top==s->base){
         return -1;//栈空，错误
     }
     return *(s->top-1);
 }
+
