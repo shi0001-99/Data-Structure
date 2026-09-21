@@ -16,3 +16,9 @@ int Push(stack* s,double e){
     }
 
 }
+int Top(stack* s){
+    if(s->top==s->base){
+        return -1;//栈空，错误
+    }
+    return *(s->top-1);
+}
