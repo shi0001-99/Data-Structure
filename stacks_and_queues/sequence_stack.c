@@ -14,7 +14,9 @@ int Push(stack* s,double e){
     if(s->top-s->base>=s->size){
         return 1;//err
     }
-
+    *(s->top)=e;
+    s->top++;
+    return 0;
 }
 
 int Top(stack* s){
