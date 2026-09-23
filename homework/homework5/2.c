@@ -10,7 +10,7 @@ int main() {
     scanf_s("%s", arr, 35);
 
 
-    char* stack = (char*)malloc(sizeof(char) * (n+ 1));
+    int* stack = (int*)malloc(sizeof(int) * (n+ 1));
     int top = 0;
 
     for (int i = 0; i < n; i++) {
