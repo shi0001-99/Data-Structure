@@ -79,7 +79,7 @@ int BFS_ShortestPath(int sx, int sy, int ex, int ey) {
 
 
 //深度优先搜素dfs
-// 全局变量记录当前找到的最短路径
+//全局变量记录当前找到的最短路径
 int minSteps = 1e9;
 
 // 从 (x, y) 走到 (ex, ey)，当前已经走了 step 步
@@ -98,8 +98,7 @@ void DFS(int x, int y, int ex, int ey, int step) {
         int nx = x + dx[i];
         int ny = y + dy[i];
 
-        if (nx >= 0 && nx < rows && ny >= 0 && ny < cols
-            && grid[nx][ny] == 0 && !visited[nx][ny]) {
+        if (nx >= 0 && nx < rows && ny >= 0 && ny < cols && grid[nx][ny] == 0 && !visited[nx][ny]) {
             visited[nx][ny] = true;
             DFS(nx, ny, ex, ey, step + 1);
             visited[nx][ny] = false;  // 回溯，恢复现场
