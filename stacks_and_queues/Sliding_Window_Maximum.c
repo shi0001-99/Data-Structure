@@ -11,15 +11,15 @@ int main() {
         scanf_s("%d", &arr[i]);
     }
     int maxnum = -10000;
-    
+
     for (int i = 0; i < n - k + 1; i++) {
         for (int j = i; j < i + k; j++) {
             if (maxnum < arr[j]) {
-                maxnum = j;
+                maxnum = arr[j];
             }
         }
+        printf("%d", maxnum);
     }
-    printf("%d", maxnum);
     return 0;
 }
 
