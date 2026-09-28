@@ -107,7 +107,7 @@ void DFS(int x, int y, int ex, int ey, int step) {
 }
 
 
-//// 从 (x, y) 出发，能不能走到 (ex, ey)
+// 从 (x, y) 出发，能不能走到 (ex, ey)
 bool DFS(int x, int y, int ex, int ey) {
     // 到达终点
     if (x == ex && y == ey) return true;
