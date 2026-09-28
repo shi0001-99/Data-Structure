@@ -65,8 +65,7 @@ int BFS_ShortestPath(int sx, int sy, int ex, int ey) {
             int ny = cur.y + dy[i];
 
             // 边界判断、障碍判断、是否已访问
-            if (nx >= 0 && nx < rows && ny >= 0 && ny < cols
-                && grid[nx][ny] == 0 && !visited[nx][ny]) {
+            if (nx >= 0 && nx < rows && ny >= 0 && ny < cols && grid[nx][ny] == 0 && !visited[nx][ny]) {
                 visited[nx][ny] = true;
                 Node next = {nx, ny, cur.step + 1};
                 EnQueue(&Q, next);
