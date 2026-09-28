@@ -16,3 +16,12 @@ Queue *initQueue(){
 int main(){
     return 0;
 }
+
+//-------------------------------------
+typedef struct{
+    int front;//队列头索引
+    int rear;//队列尾索引
+    Elmt *base;//存储空间基地址
+    int size;//存储空间容量
+}Queue;
+

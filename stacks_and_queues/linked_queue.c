@@ -46,6 +46,11 @@ int main(){
 
 //------------------------------------------------------
 typedef struct{
+    Elmt data;
+    struct Node *next;
+}next;
+
+typedef struct{
     Node *front;
     Node *rear;
     int size;//队列的当前长度
