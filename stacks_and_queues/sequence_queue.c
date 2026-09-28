@@ -48,7 +48,7 @@ int DeQ(Queue *Q,double *E){
 
 int Enq(Queue *Q,double e){
     if ((Q->rear + 1) % Q->size == Q->front) {
-        return 1; 
+        return 1; //Err
     }
     Q->base[Q->rear] = e;
     Q->rear = (Q->rear + 1) % Q->size;
