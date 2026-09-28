@@ -41,3 +41,49 @@ int dqueue(Queue *q,ElemType *e){
 int main(){
     return 0;
 }
+
+
+
+//------------------------------------------------------
+typedef struct{
+    Node *front;
+    Node *rear;
+    int size;//队列的当前长度
+}Queue;
+
+void initqueue(Queue* Q){
+    Q->front =NULL;
+    Q->rear =NULL;
+    Q->size=0;
+}
+
+int EnQ(Queue *Q,double e){
+    Node *N=(Node*)malloc(sizeof(Node));
+    N->data=e;
+    N->next=NULL;
+    if(!Q->front){
+        Q->front=Q->rear=N;
+    }
+    else{
+        Q->rear=Q-rear->next=N;
+    }
+    Q->size++;
+    return 0;
+}
+
+int DeQ(Queue *Q,double *E){
+    if(!Q->front){
+        return 1;
+    }
+    else{
+        Node *Front=Q->front;
+        Q->fornt=Q->front->next;
+        *E=Front->data;
+        free(Front);
+        Q->size--;
+        if(!Q->size){
+            Q->front=Q->rear=NULL;
+        }
+        return 0;
+    }
+}
