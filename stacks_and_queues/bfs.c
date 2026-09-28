@@ -75,3 +75,34 @@ int BFS_ShortestPath(int sx, int sy, int ex, int ey) {
 
     return -1; // 无法到达
 }
+
+
+
+//深度优先搜素dfs
+// 全局变量记录当前找到的最短路径
+int minSteps = 1e9;
+
+// 从 (x, y) 走到 (ex, ey)，当前已经走了 step 步
+void DFS(int x, int y, int ex, int ey, int step) {
+    // 剪枝：已经比当前最优解还长，没必要继续
+    if (step >= minSteps) return;
+
+    // 到达终点，更新最优解
+    if (x == ex && y == ey) {
+        if (step < minSteps) minSteps = step;
+        return;
+    }
+
+    // 尝试四个方向
+    for (int i = 0; i < 4; i++) {
+        int nx = x + dx[i];
+        int ny = y + dy[i];
+
+        if (nx >= 0 && nx < rows && ny >= 0 && ny < cols
+            && grid[nx][ny] == 0 && !visited[nx][ny]) {
+            visited[nx][ny] = true;
+            DFS(nx, ny, ex, ey, step + 1);
+            visited[nx][ny] = false;  // 回溯，恢复现场
+        }
+    }
+}
