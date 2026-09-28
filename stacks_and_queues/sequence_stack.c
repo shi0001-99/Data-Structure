@@ -26,3 +26,4 @@ int Top(stack* s){
     return *(s->top-1);
 }
 
+
