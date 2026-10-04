@@ -57,7 +57,21 @@ void dec2oct(stack* s,int n){
 
 //-------------------------------------
 //行编辑问题
-int
+void LineEdit(stack *s){
+    char c=getchar();
+    while(c!='enter'){
+        switch(c){
+            case 'a'-'z': Push(s,c); break;
+            case 'backspace': Pop(s,&c); break;
+        }
+        c=getchar();
+    }
+    ClearStack(s);
+}
+
+//-------------------------------------
+//最小栈  用另外一个栈来存储当前最小值
+
 //-------------------------------------
 //括号匹配
 int CheckBrackets(char *str) {
@@ -86,10 +100,10 @@ int CheckBrackets(char *str) {
             }
         }      
     }
-    return StackEmpty(&S);
+    return StackEmpty(&S);//最后如果栈空，返回True
 }
 
-//行编辑问题
+
 //迷宫求解
 //表达式求值
 //开关布线盒（类似于括号匹配）
