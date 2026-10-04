@@ -48,3 +48,35 @@ void spiralOrder(int matrix[ROWS][COLS]) {
     printf("\n");
 }
 
+//-------------------------------------------------------
+//对角线遍历
+void print_matrix(int **M, int m, int n) {
+    for (int sum = 0; sum <= m + n - 2; sum++) {
+        if (sum % 2 == 0)
+            up(M, m, n, sum);    // 偶数层，从左下到右上
+        else
+            down(M, m, n, sum);  // 奇数层，从右上到左下
+    }
+}
+void up(int **M, int m, int n, int sum) {
+    // 1. 确定起始行索引 i
+    int i = sum < m ? sum : m - 1;
+    
+    // 2. 循环遍历，直到越界
+    while (i >= 0 && sum - i < n) {
+        print(M[i][sum - i]);
+        i--;
+    }
+}
+// 向下遍历（奇数层：从右上向左下）
+void down(int **M, int m, int n, int sum) {
+    // 1. 确定起始行索引 i（右上角，行索引最小）
+    // 行索引 i 最小不能小于 0
+    int i = sum < n ? 0 : sum - n + 1;
+    
+    // 2. 循环遍历
+    while (i < m && sum - i >= 0) {
+        print(M[i][sum - i]);
+        i++; // 行索引增大，列索引减小
+    }
+}
