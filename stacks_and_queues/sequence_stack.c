@@ -11,7 +11,7 @@ void initstack(stack* s){
 }
 
 int Push(stack* s,double e){
-    if(s->top-s->base>=s->size){
+    if(s->top - s->base >= s->size){
         return 1;//err
     }
     *(s->top)=e;
@@ -19,9 +19,19 @@ int Push(stack* s,double e){
     return 0;
 }
 
-int Top(stack* s){
+int Top(stack* s,double *e){
     if(s->top==s->base){
-        return -1;//栈空，错误
+        return 1;//栈空，错误
     }
-    return *(s->top-1);
+    *e=*(s->top-1);
+    return 0;//ok
+}
+
+int Pop(stack* s,double *e){
+    if(s->top ==s->base){
+        return 1;//err
+    }
+    *e=*(s->top-1);
+    s->top--;
+
 }
