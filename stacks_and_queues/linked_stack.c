@@ -1,6 +1,6 @@
 typedef struct{
     Node *base;
-    Node *top;
+    Node *top;//指向栈顶元素
     int size;//栈当前的大小
 }stack;//实际上是一个保持首尾指针的单链表
 
@@ -24,19 +24,41 @@ int Push(stack* s,double e){
     return 0;
 }
 
+int Pop(stack* s,double *e){
+    if(!s->base){
+        return 1;//err
+    }
+    else{
+        Node* Top=s->top;
+        s->top=Top->next;
+        *e=Top->data;
+        free(Top);
+        s->size--;
+        if(!s->size){
+            s->top=s->base=NULL;
+        }
+        return 0;
+    }
+}
+
+//-------------------------------------
 //十进制转换八进制
 void dec2oct(stack* s,int n){
     while(n){
         Push(s,n%8);
         n/=8;
-    }
+    }//压栈，倒序存储
     while(!stackempty(s)){
         int e;
         Pop(s,&e);
         printf("%d",e);
-    }
+    }//弹栈，输出为正序
 }
 
+//-------------------------------------
+//行编辑问题
+int
+//-------------------------------------
 //括号匹配
 int CheckBrackets(char *str) {
     Stack S;
