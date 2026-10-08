@@ -107,7 +107,7 @@ void DFS(int x, int y, int ex, int ey, int step) {
 }
 
 
-// 从 (x, y) 出发，能不能走到 (ex, ey)
+// 从 (x, y) 出发，判断能不能走到 (ex, ey)
 bool DFS(int x, int y, int ex, int ey) {
     // 到达终点
     if (x == ex && y == ey) return true;
@@ -119,8 +119,7 @@ bool DFS(int x, int y, int ex, int ey) {
         int nx = x + dx[i];
         int ny = y + dy[i];
 
-        if (nx >= 0 && nx < rows && ny >= 0 && ny < cols
-            && grid[nx][ny] == 0 && !visited[nx][ny]) {
+        if (nx >= 0 && nx < rows && ny >= 0 && ny < cols && grid[nx][ny] == 0 && !visited[nx][ny]) {
             if (DFS(nx, ny, ex, ey)) {
                 return true;  // 找到一条路就返回
             }
