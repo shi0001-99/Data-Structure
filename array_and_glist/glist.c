@@ -69,3 +69,18 @@ void printTail(Node* x,int d){
     printNode(x->data.ptrs.hp,d);// (a,(b))起作用的递归
     printTail(x->data.ptrs.tp,d);
 }
+
+//复制广义表
+Node *CopyGList(Node *T) {
+    if (!T) return NULL; else {
+       Node *NewT = (Node *) malloc(sizeof(Node)); NewT->tag = T->tag;
+       if (T->tag == 0) NewT->data.atom = T->data.atom;
+       else {
+           Node *NewHp = CopyGList(T->data.ptrs.hp);
+           Node *NewTp = CopyGList(T->data.ptrs.tp);
+           NewT->data.ptrs.hp = NewHp;
+           NewT->data.ptrs.tp = NewTp;
+       }
+       return NewT;
+    }
+}
