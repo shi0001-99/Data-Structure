@@ -28,9 +28,6 @@ int main() {
 #include <stdlib.h>
 #include<string.h>
 
-#include <stdio.h>
-#include <stdlib.h>
-
 /**
  * nums: 输入数组
  * numsSize: 数组长度
