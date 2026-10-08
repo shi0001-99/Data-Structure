@@ -13,7 +13,8 @@ int dy[4] = {0, 0, -1, 1};//列号怎么变化
 
 int rows, cols;  
 
-//广度优先搜索
+//广度优先搜索 用队列queue 先进先出
+
 //队列节点：保存坐标和当前步数
 typedef struct {
     int x, y;
@@ -27,19 +28,19 @@ typedef struct {
 
 void InitQueue(Queue *Q) {
     Q->front = Q->rear = 0;
-}
+}//初始化
 
 bool QueueEmpty(Queue *Q) {
     return Q->front == Q->rear;
-}
+}//判断是否为空
 
 void EnQueue(Queue *Q, Node n) {
     Q->data[Q->rear++] = n;
-}
+}//从队尾添加元素
 
 Node DeQueue(Queue *Q) {
     return Q->data[Q->front++];
-}
+}//从队头删除元素，并返回这个元素
 
 // 从 (sx, sy) 到 (ex, ey) 的最短路径长度
 int BFS_ShortestPath(int sx, int sy, int ex, int ey) {
