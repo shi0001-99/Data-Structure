@@ -66,6 +66,6 @@ void printNode(Node *x,int d){
 void printTail(Node* x,int d){
     if(!x) return;
     printf(",");
-    printNode(x->data.ptrs.hp,d);//标准情况下起作用的递归
+    printNode(x->data.ptrs.hp,d);// (a,(b))起作用的递归
     printTail(x->data.ptrs.tp,d);
 }
