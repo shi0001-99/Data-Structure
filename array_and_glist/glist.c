@@ -8,7 +8,7 @@ Head(LS)=a0
 Tail(LS)=(a1,...,an-1)//把剩余部分套个括号
 
 typedef struct Node{
-    int tag;
+    int tag;//0是原子,1是广义表
     union{
         AtomType atom;
         struct{
@@ -24,6 +24,7 @@ void printNode(Node *x){
         printf("%d",x->data.atom)
         return ;
     }
+    
     printf("(");
     Node* hp=x->data.ptrs.hp;
     Node* tp=x->data.ptrs.tp;
