@@ -58,6 +58,7 @@ void print_matrix(int **M, int m, int n) {
             down(M, m, n, sum);  // 奇数层，从右上到左下
     }
 }
+// 向上遍历
 void up(int **M, int m, int n, int sum) {
     // 1. 确定起始行索引 i
     int i = sum < m ? sum : m - 1;
