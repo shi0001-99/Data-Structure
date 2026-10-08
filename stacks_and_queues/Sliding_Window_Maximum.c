@@ -23,7 +23,7 @@ int main() {
     return 0;
 }
 
-//时间复杂度O(n)
+//时间复杂度O(n)  用队列queue 先进先出
 #include <stdio.h>
 #include <stdlib.h>
 #include<string.h>
@@ -42,7 +42,8 @@ int* maxSlidingWindow(int* nums, int numsSize, int k, int* returnSize) {
 
     // 结果数组最多有 numsSize - k + 1 个元素
     int* result = (int*)malloc(sizeof(int) * (numsSize - k + 1));
-    // 单调队列：存下标，用数组模拟双端队列
+    
+    // 单调队列：储存 下标 ，用数组模拟双端队列
     int* deque = (int*)malloc(sizeof(int) * numsSize);
     int head = 0;  // 队首指针
     int tail = 0;  // 队尾指针（指向下一个空位）
@@ -71,6 +72,7 @@ int* maxSlidingWindow(int* nums, int numsSize, int k, int* returnSize) {
     free(deque);
     return result;
 }
+
 
 // 测试
 int main() {
