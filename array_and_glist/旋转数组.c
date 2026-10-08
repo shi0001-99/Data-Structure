@@ -31,4 +31,3 @@ void rotate(int matrix[N][N]) {
         B--;
     }
 }
- 
