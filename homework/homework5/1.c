@@ -56,7 +56,7 @@ int main(){
         stack[top++]=c;
     }
     int start=0;
-    while(start<top && stack[start]==0){
+    while(start<top && stack[start]=='0'){
         start++;
     }
     if(start==top){
@@ -65,6 +65,39 @@ int main(){
     else{
         while (start < top) {
             printf("%c", stack[start]);
+            start++;
+        }
+    }
+    return 0;
+}
+
+//------------------------------------------------
+int main(){
+    char arr[100000];
+    scanf_s("%s",arr,100000);
+    int k;
+    scanf_s("%d",&k);
+    int length=strlen(arr);
+    char* stack = (char*)malloc(sizeof(char) * (length + 1));
+    int top = 0;
+    for(int i=0;i<length;i++){
+        char c =arr[i];
+        while(top>0 && k>0 && c<stack[top-1]){
+            k--;
+            top--;
+        }
+        stack[top++]=c;
+    }
+    int start=0;
+    while(start<top && stack[start]=='0'){
+        start++;
+    }
+    if(start==top){
+        printf("0");
+    }
+    else{
+        while(start<top){
+            printf("%c",&stack[start]);
             start++;
         }
     }
