@@ -77,7 +77,8 @@ Node *CopyGList(Node *T) {
         return NULL;
     } 
     else{
-       Node *NewT = (Node *) malloc(sizeof(Node)); NewT->tag = T->tag;
+       Node *NewT = (Node *) malloc(sizeof(Node)); 
+       NewT->tag = T->tag;
        if (T->tag == 0) NewT->data.atom = T->data.atom;
        else {
            Node *NewHp = CopyGList(T->data.ptrs.hp);
