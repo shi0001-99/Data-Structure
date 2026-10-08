@@ -24,7 +24,7 @@ void printNode(Node *x){
         printf("%d",x->data.atom)
         return ;
     }
-    
+
     printf("(");
     Node* hp=x->data.ptrs.hp;
     Node* tp=x->data.ptrs.tp;
@@ -37,4 +37,35 @@ void printTail(Node* x){
     printf(",");
     printNode(x->data.ptrs.hp);
     printTail(x->data.ptrs.tp);
+}
+
+
+//求深度
+//printNode(L,0);
+void printNode(Node *x,int d){
+    if(!x) return;
+    if(!x->tag){
+        printf("%d",x->data.atom)
+        return;
+    }
+
+    printf("(");  
+    d++;
+
+    if(d>Max){
+        Max=d;
+    }
+
+    Node* hp=x->data.ptrs.hp;
+    Node* tp=x->data.ptrs.tp;
+    printNode(hp,d);
+    printTail(tp,d);
+    printf(")");
+}
+
+void printTail(Node* x,int d){
+    if(!x) return;
+    printf(",");
+    printNode(x->data.ptrs.hp,d);//标准情况下起作用的递归
+    printTail(x->data.ptrs.tp,d);
 }
