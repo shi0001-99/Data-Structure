@@ -73,7 +73,10 @@ void printTail(Node* x,int d){
 
 //复制广义表
 Node *CopyGList(Node *T) {
-    if (!T) return NULL; else {
+    if (!T){
+        return NULL;
+    } 
+    else{
        Node *NewT = (Node *) malloc(sizeof(Node)); NewT->tag = T->tag;
        if (T->tag == 0) NewT->data.atom = T->data.atom;
        else {
