@@ -89,5 +89,3 @@ Node *CopyGList(Node *T) {
        return NewT;
     }
 }
-
-
