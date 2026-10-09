@@ -17,3 +17,4 @@ bool Search1D(int *nums, int left, int right, int k) {
         return Search1D(nums, mid + 1, right, k);
     }
 }
+
