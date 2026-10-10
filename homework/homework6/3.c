@@ -4,8 +4,8 @@
 #define MAXN 1000005
 int a[MAXN];
 // 单调队列：存储下标
-int max_q[MAXN];  // 维护递减序列， 队首是当前最大值
-int min_q[MAXN];  // 维护递增序列， 队首是当前最小值
+int max_q[MAXN];  // 队首是当前最大值
+int min_q[MAXN];  // 队首是当前最小值
 
 int main() {
     int n, limit;
@@ -15,8 +15,10 @@ int main() {
         scanf("%d", &a[i]);
     }
 
+
+
     int max_head = 0, max_tail = 0;  //max_q的头尾指针
-    int min_head = 0, min_tail = 0;  
+    int min_head = 0, min_tail = 0;  //min_q的头尾指针
 
     int left = 0;
     int ans = 0;
