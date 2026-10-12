@@ -14,3 +14,21 @@ strcpy(s1,s2)//
 strchr(s,c)
 strstr(s1,s2)//返回s2在s1第一次出现的位置指针
 
+char* strstr(const char *s1, const char *s2) {
+    int length1 = strlen(s1);
+    int length2 = strlen(s2);
+
+    if (length2 == 0) return (char*)s1;   // 空串返回 s1
+    if (length1 < length2) return NULL;
+
+    for (int i = 0; i <= length1 - length2; i++) {
+        int j = 0;//偏移量
+        while (j < length2 && s1[i + j] == s2[j]) {
+            j++;
+        }
+        if (j == length2) {
+            return (char*)(s1 + i);
+        }
+    }
+    return NULL;
+}
