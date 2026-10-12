@@ -32,3 +32,19 @@ char* strstr(const char *s1, const char *s2) {
     }
     return NULL;
 }
+
+
+char *build_next(char *T) {
+    int m = strlen(T);
+    int *Next =(int*)malloc(sizeof(int)*m); 
+    Next[0] = 0;
+    int prefix length = 0;
+    int i=1;
+    while (i < m)
+        if (T[i] == T[prefix_length]) Next[i++] = ++prefix_length;
+        else {
+            prefix_length = Next[prefix_length - 1];
+            if (prefix_length == 0) Next[i++] = 0;
+        }
+    return Next;
+}
