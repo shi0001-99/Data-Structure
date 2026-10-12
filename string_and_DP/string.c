@@ -10,10 +10,13 @@ char* ch;//串的顺序表，空串为NULL
 strlen()//返回长度 O(n)
 strcmp()//相同返回0，否则非0
 strcat(s1,s2)//把s2放到s1的末尾,s1要有足够空间
-strcpy(s1,s2)//
-strchr(s,c)
+strcpy(s1,s2)//把s2复制到s1,s1必须要有足够的空间
+strchr(s,c)//返回c在s中第一次出现的位置指针
 strstr(s1,s2)//返回s2在s1第一次出现的位置指针
 
+
+//暴力枚举BF 时间复杂度O(m*n)
+//法一
 char* strstr(const char *s1, const char *s2) {
     int length1 = strlen(s1);
     int length2 = strlen(s2);
@@ -32,19 +35,45 @@ char* strstr(const char *s1, const char *s2) {
     }
     return NULL;
 }
+//法二
+char* strstr(char* s,char* t){
+    int n=strlen(s);
+    int m=strlen(t);
+    int i=0;
+    int j=0;
+    while(i<n && j<m){
+        if(s[i]==t[j]){
+            i++;
+            j++;
+        }
+        else{
+            i=i-j+1;
+            j=0;
+        }
+    }
+    if(j>=m){
+        return s+i-j;
+    }
+    else{
+        return NULL;
+    }
+}
 
 
+//KMP算法
 char *build_next(char *T) {
     int m = strlen(T);
     int *Next =(int*)malloc(sizeof(int)*m); 
     Next[0] = 0;
-    int prefix length = 0;
+    int prefix_length = 0;
     int i=1;
     while (i < m)
         if (T[i] == T[prefix_length]) Next[i++] = ++prefix_length;
         else {
+            
             prefix_length = Next[prefix_length - 1];
             if (prefix_length == 0) Next[i++] = 0;
         }
     return Next;
 }
+
