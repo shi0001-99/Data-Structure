@@ -61,6 +61,8 @@ char* strstr(char* s,char* t){
 
 
 //KMP算法  让i保持不后退 整体时间复杂度是O(m+n) 匹配阶段时间复杂度是O(n)
+
+
 char *build_next(char *T) {
     int m = strlen(T);
     int *Next =(int*)malloc(sizeof(int)*m); 
