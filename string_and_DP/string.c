@@ -59,28 +59,6 @@ char* strstr(char* s,char* t){
         return NULL;
     }
 }
-char* strstr(char *s,char *t){
-    int n=strlen(s);
-    int m=strlen(t);
-    int i=0;
-    int j=0;
-    while(i<m && j<n){
-        if(s[i]==t[j]){
-            i++;
-            j++;
-        }
-        else{
-            i=i-j+1;
-            j=0;
-        }
-    }
-    if(j>=m){
-        return s+i-j;
-    }
-    else{
-        return NULL;
-    }
-}
 
 
 //KMP算法  让i保持不后退 整体时间复杂度是O(m+n) 匹配阶段时间复杂度是O(n)
