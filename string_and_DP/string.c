@@ -35,6 +35,7 @@ char* strstr(const char *s1, const char *s2) {
     }
     return NULL;
 }
+
 //法二
 char* strstr(char* s,char* t){
     int n=strlen(s);
@@ -58,11 +59,34 @@ char* strstr(char* s,char* t){
         return NULL;
     }
 }
+char* strstr(char *s,char *t){
+    int n=strlen(s);
+    int m=strlen(t);
+    int i=0;
+    int j=0;
+    while(i<m && j<n){
+        if(s[i]==t[j]){
+            i++;
+            j++;
+        }
+        else{
+            i=i-j+1;
+            j=0;
+        }
+    }
+    if(j>=m){
+        return s+i-j;
+    }
+    else{
+        return NULL;
+    }
+}
 
 
 //KMP算法  让i保持不后退 整体时间复杂度是O(m+n) 匹配阶段时间复杂度是O(n)
 char *strstr(char *s,char *t,int *next){//假设next已经计算完毕
     int n=strlen(s);
+    int m=strlen(t);
     int i=0;
     int j=0;
     while(i<n && j<m){
@@ -85,6 +109,30 @@ char *strstr(char *s,char *t,int *next){//假设next已经计算完毕
     }
 }
 
+char* strstr(char *s,char* t){
+    int n=strlen(s);
+    int m=strlen(t);
+    int i=0;
+    int j=0;
+    while(i<n && j<m){
+        if(s[i]==t[j]){
+            i++;
+            j++;
+        }
+        else if(j>0){
+            j=next[j-1];
+        }
+        else{
+            i++;
+        }
+    }
+    if(j>=m){
+        return s+i-j;
+    }
+    else{
+        return NULL;
+    }
+}
 //构建next的时间复杂度O(m)
 char *build_next(char *T) {//寻找子串中的最长相同 真 前后缀的长度
     int m = strlen(T);
