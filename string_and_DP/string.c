@@ -109,27 +109,7 @@ char *build_next(char *T) {//寻找子串中的最长相同 真 前后缀的长�
     return Next;
 }
 
-char *build_next(char *t){
-    int m=strlen(t);
-    int *next=(int *)malloc(sizeof(int)*m);
-    next[0]=0;
-    int prefix_length=0;
-    int i=1;
-    while(i<m){
-        if(t[i]==t[prefix_length]){
-            next[i++]=prefix_length++;
-        }
-        else{
-            if(prefix_length==0){
-                next[i++]=0;
-            }
-            else{
-                prefix_length=next[prefix_length-1];
-            }
-        }
-    }
-    return next;
-}
+
 //最短与最长回文串
 /*最短回文串：给定字符串 s，通过在其前面添加字符将其转换为回文串
              找到并返回可以得到的最短回文串
