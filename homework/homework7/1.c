@@ -25,9 +25,12 @@ int main() {
     for (int i = la - 1; i >= 0; i--) {
         for (int j = lb - 1; j >= 0; j--) {
             int mul = (a[i]) * (b[j]);
+
             int p1 = i + j;
             int p2 = i + j + 1;
+
             int sum = mul + tmp[p2];
+            
             tmp[p2] = sum % 10;
             tmp[p1] += sum / 10;
         }
