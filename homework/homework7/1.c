@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
-char a[5005], b[5005];      
+int a[5005], b[5005];      
 int tmp[2000005];          
 
 int main() {
@@ -13,13 +13,10 @@ int main() {
     for (int i = 0; i < n; i++) {
         int v;
         scanf("%d", &v);
-        if (v < x) a[la++] = v + '0';
-        else       b[lb++] = v + '0';
+        if (v < x) a[la++] = v ;
+        else       b[lb++] = v ;
     }
-    a[la] = '\0';
-    b[lb] = '\0';
 
-    
     if (la == 0 || lb == 0) {
         printf("0\n");
         return 0;
@@ -27,7 +24,7 @@ int main() {
 
     for (int i = la - 1; i >= 0; i--) {
         for (int j = lb - 1; j >= 0; j--) {
-            int mul = (a[i] - '0') * (b[j] - '0');
+            int mul = (a[i]) * (b[j]);
             int p1 = i + j;
             int p2 = i + j + 1;
             int sum = mul + tmp[p2];
@@ -48,7 +45,7 @@ int main() {
 
   
     for (; k < la + lb; k++) {
-        printf("%c", tmp[k] + '0');
+        printf("%d", tmp[k]);
     }
     printf("\n");
 
