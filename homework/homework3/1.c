@@ -29,9 +29,9 @@ bool istwohuiwen(int n){
     int index=0;
     int temp=n;
     while(temp>0){
-        num[index++]=(temp%2)? '1': '0';
+        num[index++]=(temp%2)? '1': '0';//如果余数是0，那么为假，存储'0'
         temp/=2;
-    }
+    } 
     for(int i=0;i<index/2;i++){
         if(num[i]!=num[index-1-i]){
             return false;
