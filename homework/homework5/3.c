@@ -9,11 +9,11 @@ int main() {
     for (int i = 0; i < n; i++) {
         scanf_s("%d", &arr[i]);
     }
-    int pos = 0;//代表进栈顺序12345...
+    int pos = 0;
     int top = 0;//栈里面的位置下表
 
     for (int i = 1; i <= n; i++) {
-        stack[top++] = i;
+        stack[top++] = i;//进栈顺序12345
         while (top>0 && stack[top-1] == arr[pos]) {
             pos++;
             top--;
