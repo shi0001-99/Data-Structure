@@ -52,7 +52,7 @@ int main() {
             }
             k_node->prev = &node_arr[i];
         }
-        else {
+        else {//i在k的右边
         
             Node* k_node = &node_arr[k];
             node_arr[i].next = k_node->next;
