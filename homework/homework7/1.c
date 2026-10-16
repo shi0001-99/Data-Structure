@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <string.h>
-
+213546488454546455
 int a[5005], b[5005];      
-int tmp[2000005];          
+int tmp[2000005];            
 
 int main() {
     int n, x;
@@ -43,7 +43,7 @@ int main() {
     }
 
   
-    int k = 0;
+    int k = 0; 
     while (k < la + lb - 1 && tmp[k] == 0) k++;
 
   
