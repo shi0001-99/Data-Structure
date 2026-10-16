@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <string.h>
-
+//输入aaaabbbcc   输出4a3b2c
 int main() {
     char s[1000];
     scanf("%s", s);
