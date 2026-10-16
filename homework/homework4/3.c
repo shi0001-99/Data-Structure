@@ -15,7 +15,7 @@ int main() {
 	int cows = 0;
 
 	int state[1000] = { 0 };//guess里面的数是否被匹配过了
-	int num[1000] = { 0 };//还没被匹配的secret里面的字母的个数
+	int num[1000] = { 0 };//还没被匹配的secret里面的 数 的个数
 	for (int i = 0; i < n; i++) {
 		if (secret[i] == guess[i]) {
 			bulls++;
