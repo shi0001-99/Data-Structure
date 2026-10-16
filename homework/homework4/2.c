@@ -10,8 +10,7 @@ int main() {
     }
 
     
-    for (int i = 0; i < n; i++) {
-        
+    for (int i = 0; i < n; i++) {  
         while (nums[i] >= 1 && nums[i] <= n && nums[nums[i] - 1] != nums[i]) {
             int tmp = nums[i];
             nums[i] = nums[tmp - 1];
