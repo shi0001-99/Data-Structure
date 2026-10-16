@@ -43,7 +43,7 @@ int main() {
         node_arr[i].id = i;
         deleted[i] = false;
 
-        if (p == 0) {
+        if (p == 0) {//i在k的左边
             Node* k_node = &node_arr[k];
             node_arr[i].prev = k_node->prev;
             node_arr[i].next = k_node;
