@@ -156,3 +156,14 @@ int sub(char* x,char* y){//时间复杂度O(n)
 }
 
 
+int lcs(char* x,int n,char* y,int m){
+    if(n==0||m==0){
+        return 0;
+    }
+    else if(x[n-1]==y[m-1]){
+        return lcs(x,m-1,y,n-1);
+    }
+    else{
+        return max(lcs(x,n-1,y,m),lcs(x,n,y,m-1));//最坏情况O(2^n)
+    }
+}
