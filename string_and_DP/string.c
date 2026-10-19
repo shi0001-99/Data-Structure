@@ -132,7 +132,7 @@ char *build_next(char *T) {//寻找子串中的最长相同 真 前后缀的长�
 */
 
 
-//最长公共子序列
+//最长公共子序列lcs
 int sub(char* x,char* y){//时间复杂度O(n)
     int i=0;
     int j=0;
@@ -161,9 +161,18 @@ int lcs(char* x,int n,char* y,int m){
         return 0;
     }
     else if(x[n-1]==y[m-1]){
-        return lcs(x,m-1,y,n-1);
+        return lcs(x,m-1,y,n-1)+1;
     }
     else{
-        return max(lcs(x,n-1,y,m),lcs(x,n,y,m-1));//最坏情况O(2^n)
+        return max(lcs(x,n-1,y,m),lcs(x,n,y,m-1));//最坏情况O(2^n)，但其实最多有m*n种情况
     }
 }
+
+
+//从下向上，规避掉重复问题
+x[n-1]==y[m-1] 那么 lcs(x,n,y,m)=lcs(x,n-1,y,m-1)+1
+x[n-1]!=y[m-1] 那么 lcs(x,n,y,m)=max(lcs(x,n-1,y,m),lcs(x,n,y,m-1))
+
+0 0 0
+0 1 1
+0 1 2
