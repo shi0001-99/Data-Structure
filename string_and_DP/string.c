@@ -131,5 +131,26 @@ char *build_next(char *T) {//寻找子串中的最长相同 真 前后缀的长�
         插入 # 使奇偶统一
 */
 
+int sub(char* x,char* y){
+    int i=0;
+    int j=0;
+    int lx=strlen(x);
+    int ly=strlen(y);
+    while(i<lx && j<ly){
+        if(x[i]==y[j]){
+            i++;
+            j++;
+        }
+        else{
+            i++;
+        }
+    }
+    if(j==ly){
+        return 1;//成功
+    }
+    else{
+        return 0;//失败
+    }
+}
 
 
