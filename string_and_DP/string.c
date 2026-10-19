@@ -131,7 +131,9 @@ char *build_next(char *T) {//寻找子串中的最长相同 真 前后缀的长�
         插入 # 使奇偶统一
 */
 
-int sub(char* x,char* y){
+
+//最长公共子序列
+int sub(char* x,char* y){//时间复杂度O(n)
     int i=0;
     int j=0;
     int lx=strlen(x);
