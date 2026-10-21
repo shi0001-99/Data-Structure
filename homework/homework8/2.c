@@ -15,7 +15,7 @@ long long max(long long a, long long b) {
 int main() {
     int n, k;
     
-    if (scanf("%d %d", &n, &k) != 2) return 0;
+    scanf("%d %d", &n, &k);
 
     
     for (int i = 0; i < n; i++) {
