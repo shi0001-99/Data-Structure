@@ -36,13 +36,13 @@ int main() {
         
         long long prefix_sum[MAX_K] = {0};
         for (int j = 1; j <= counts[i]; j++) {
-            prefix_sum[j] = prefix_sum[j - 1] + coins[i][j - 1];
+            prefix_sum[j] = prefix_sum[j - 1] + coins[i][j - 1];//把当前罐子的前缀算出来
         }
 
         
-        for (int w = k; w >= 0; w--) {
+        for (int w = k; w >= 0; w--) {//目前还能再拿k个硬币
 
-            for (int j = 1; j <= counts[i] && j <= w; j++) {
+            for (int j = 1; j <= counts[i] && j <= w; j++) {//在当前罐子拿j个硬币
                 if (dp[w - j] != -1e18) { 
                     dp[w] = max(dp[w], dp[w - j] + prefix_sum[j]);
                 }
