@@ -40,7 +40,7 @@ int main() {
         }
 
         
-        for (int w = k; w >= 0; w--) {//目前还能再拿w个硬币
+        for (int w = k; w >= 0; w--) {//目前还能再拿w个硬币,遍历
 
             for (int j = 1; j <= counts[i] && j <= w; j++) {//在当前罐子拿j个硬币
                 if (dp[w - j] != -1e18) { 
