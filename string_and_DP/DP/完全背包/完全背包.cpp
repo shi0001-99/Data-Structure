@@ -20,8 +20,8 @@ int main() {
 
     for (int i = 1; i < n; i++) { // 遍历物品
         for(int j = 0; j <= bagWeight; j++) { // 遍历背包容量
-            if (j < weight[i]) dp[i][j] = dp[i - 1][j];
-            else dp[i][j] = max(dp[i - 1][j], dp[i][j - weight[i]] + value[i]);
+            if (j < weight[i]) dp[i][j] = dp[i - 1][j];//一个物品i都放不了
+            else dp[i][j] = max(dp[i - 1][j], dp[i][j - weight[i]] + value[i]);//完全不放物品i 和 放物品i
         }
     }
 
