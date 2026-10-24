@@ -35,7 +35,9 @@ int findTargetSumWays(int* nums, int numsSize, int target) {
     if ((target + sum) % 2 == 1) return 0;
     if(abs(target)>sum) return 0;
     int x=(target+sum)/2;
+
     int dp[25][1005]={0};
+    
     dp[0][0]=1;
     if (nums[0] <= x) dp[0][nums[0]] = 1;
     int numZero = 0;
@@ -43,6 +45,7 @@ int findTargetSumWays(int* nums, int numsSize, int target) {
         if (nums[i] == 0) numZero++;
         dp[i][0] = (int) pow(2.0, numZero);
     }
+
     for(int i=1;i<numsSize;i++){
         for(int j=1;j<=x;j++){
             if (nums[i] > j) dp[i][j] = dp[i - 1][j]; 
