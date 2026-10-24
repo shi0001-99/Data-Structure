@@ -20,7 +20,7 @@ int main(){
 //-------------------------------------
 typedef struct{
     int front;//队列头索引
-    int rear;//队列尾索引
+    int rear;//队列尾索引，末尾元素的下一个位置
     Elmt *base;//存储空间基地址
     int size;//存储空间容量
 }Queue;
