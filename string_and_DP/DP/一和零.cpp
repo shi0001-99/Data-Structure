@@ -10,8 +10,9 @@ public:
                 if (c == '0') zeroNum++;
                 else oneNum++;
             }
-            for (int i = m; i >= zeroNum; i--) { // 遍历背包容量且从后向前遍历！
-                for (int j = n; j >= oneNum; j--) {
+            // 遍历背包容量且从后向前遍历！
+            for (int i = m; i >= zeroNum; i--) { 
+                for (int j = n; j >= oneNum; j--) {//这里是三重循环了
                     dp[i][j] = max(dp[i][j], dp[i - zeroNum][j - oneNum] + 1);
                 }
             }
