@@ -1,3 +1,4 @@
+//完全背包：一种物品有无限个
 #include <iostream>
 #include <vector>
 using namespace std;
@@ -29,3 +30,5 @@ int main() {
 
     return 0;
 }
+
+//---------------------------------------------------------
