@@ -1,3 +1,5 @@
+//01背包中二维dp数组的两个for遍历的先后循序是可以颠倒了，一维dp数组的两个for循环先后循序一定是先遍历物品，再遍历背包容量。
+
 #include <bits/stdc++.h>
 using namespace std;
 
