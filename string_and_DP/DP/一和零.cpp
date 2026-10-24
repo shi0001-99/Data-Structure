@@ -1,4 +1,5 @@
 //dp[i][j]：最多有i个0和j个1的strs的最大子集的大小为dp[i][j]
+//解题方法类似于01背包里面一维数组。dp[i][j]里面的i，j实际上都是重量维度，每个字符串的价值为1
 class Solution {
 public:
     int findMaxForm(vector<string>& strs, int m, int n) {
