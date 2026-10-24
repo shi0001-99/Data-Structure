@@ -15,3 +15,18 @@ int change(int amount, int* coins, int coinsSize) {
     }
     return dp[coinsSize-1][amount];
 }
+
+//----------------------------------------------------------
+class Solution {
+public:
+    int change(int amount, vector<int>& coins) {
+        vector<uint64_t> dp(amount + 1, 0); // 防止相加数据超int
+        dp[0] = 1; // 只有一种方式达到0
+        for (int i = 0; i < coins.size(); i++) { // 遍历物品
+            for (int j = coins[i]; j <= amount; j++) { // 遍历背包
+                dp[j] += dp[j - coins[i]];
+            }
+        }
+        return dp[amount]; // 返回组合数
+    }
+};
