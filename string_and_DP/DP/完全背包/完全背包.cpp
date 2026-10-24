@@ -32,4 +32,38 @@ int main() {
 }
 
 //----------------------------------------------------------------
-//一维数组
+//一维数组   在完全背包中，对于一维dp数组来说，其实两个for循环嵌套顺序是无所谓的！
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    int N, bagWeight;
+    cin >> N >> bagWeight;
+    vector<int> weight(N, 0);
+    vector<int> value(N, 0);
+    for (int i = 0; i < N; i++) {
+        int w;
+        int v;
+        cin >> w >> v;
+        weight[i] = w;
+        value[i] = v;
+    }
+
+    vector<int> dp(bagWeight + 1, 0);
+
+    for(int i = 0; i < weight.size(); i++) { // 遍历物品
+        for(int j = 0; j <= bagWeight; j++) { // 遍历背包容量
+            if (j - weight[i] >= 0) dp[j] = max(dp[j], dp[j - weight[i]] + value[i]);
+        }
+    }
+    //或
+    for(int j = 0; j <= bagWeight; j++) { // 遍历背包容量
+        for(int i = 0; i < weight.size(); i++) { // 遍历物品
+            if (j - weight[i] >= 0) dp[j] = max(dp[j], dp[j - weight[i]] + value[i]);
+        }
+    }
+    cout << dp[bagWeight] << endl;
+
+    return 0;
+}
