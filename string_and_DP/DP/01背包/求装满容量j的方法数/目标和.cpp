@@ -67,10 +67,10 @@ public:
         int bagSize = (target + sum) / 2;
         
         vector<int> dp(bagSize + 1, 0);
-        dp[0] = 1;
+        dp[0] = 1;//有一种方法，即什么都不装
         for (int i = 0; i < nums.size(); i++) {
             for (int j = bagSize; j >= nums[i]; j--) {
-                dp[j] += dp[j - nums[i]];
+                dp[j] += dp[j - nums[i]];//根据二维数组压缩得到
             }
         }
         return dp[bagSize];
