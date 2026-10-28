@@ -57,3 +57,56 @@ int main(){
                     右子节点是21+1
                     (考虑是否越界)
 */
+
+先序 A B C D E F G H K 深度优先搜素 使用栈
+中序 B D C A E H G K F 
+后序 D C B H K G F E A
+
+void PreOrderTraverse(TreeNode *Root){
+    if(!Root){
+        return ;
+    }
+    Stack S;
+    Push(&S,Root);
+    while(!Empty(&S)){
+        TreeNode *TopNode=Top(&S);
+        Pop(&S);
+        visit(TopNode);
+        if(TopNode->right){
+            Push(&S,TopNode->right);
+        }
+        if(TopNode->left){
+            Push(&S,TopNode->left);
+        }
+    }
+}
+
+void PostOrderTraverse(TreeNode *Root){
+    if(!Root){
+        return ;
+    }
+    Stack S1,S2;
+    Push(&S1,Root);
+    while(!Empty(&S1)){
+        TreeNode *TopNode=Top(&S1);
+        Pop(&S1);
+        Push(&S2,TopNode);
+        if(TopNode->left){
+            Push(&S1,TopNode->left);
+        }
+        if(TopNode->right){
+            Push(&S1,TopNode->right);
+        }
+    }
+    while(!Empty(&S2)){
+        visit(Top(&S2));
+        Pop(&S2);
+    }
+}
+
+int Depth(TreeNode* N){
+    if(!N){
+        return 0;
+    }
+    return max(Depth(N->left),Depth(N->right))+1;  
+}
