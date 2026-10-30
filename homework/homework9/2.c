@@ -13,6 +13,52 @@ Node* create(int x){
     return p;
 }
 
+int dfs(Node *root, int *ans)
+{
+    if (root == NULL)
+        return 0;
+
+    /* 先计算左子树和右子树 */
+    int left = dfs(root->left, ans);
+    int right = dfs(root->right, ans);
+
+    int leftLen = 0;
+    int rightLen = 0;
+
+    /* 如果左孩子和当前节点值相同，可以接上 */
+    if (root->left != NULL &&
+        root->left->data == root->data)
+    {
+        leftLen = left + 1;
+    }
+
+    /* 如果右孩子和当前节点值相同，可以接上 */
+    if (root->right != NULL &&
+        root->right->data == root->data)
+    {
+        rightLen = right + 1;
+    }
+
+    /* 
+       最长路径可能经过当前节点，
+       所以左边 + 右边
+    */
+    if (leftLen + rightLen > *ans)
+    {
+        *ans = leftLen + rightLen;
+    }
+
+    /*
+       返回给父节点时只能选一边
+    */
+    if (leftLen > rightLen)
+        return leftLen;
+    else
+        return rightLen;
+}
+
+int ans=0;
+
 int main(){
     Node* q[10000];
     int front=0,rear=0;
@@ -42,4 +88,8 @@ int main(){
             q[rear++] = p->right;
         }
     }
+
+    dfs(root, &ans);
+    printf("%d\n", ans);
+    return 0;
 }
