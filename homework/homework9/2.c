@@ -22,8 +22,8 @@ int dfs(Node *root, int *ans)
     int left = dfs(root->left, ans);
     int right = dfs(root->right, ans);
 
-    int leftLen = 0;
-    int rightLen = 0;
+    int leftLen,rightlen;
+    
 
     /* 如果左孩子和当前节点值相同，可以接上 */
     if (root->left != NULL &&
