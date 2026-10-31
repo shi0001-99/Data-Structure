@@ -56,7 +56,7 @@ int main(void) {
     int N;
     scanf("%d", &N);
 
-    long long *src = malloc(sizeof(long long) * N);  // 只读输入
+    long long *src = malloc(sizeof(long long) * N);  // 只读输入，最终展示的顺序
     long long *cur = malloc(sizeof(long long) * N);  // 工作牌堆
 
     for (int i = 0; i < N; i++) {
