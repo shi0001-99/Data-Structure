@@ -50,59 +50,49 @@ int main()
 
 //---------------------------------------------------------------
 #include <stdio.h>
+#include <stdlib.h>
 
-int main() {
+int main(void) {
     int N;
     scanf("%d", &N);
 
-    long long a[N];
+    long long *src = malloc(sizeof(long long) * N);  // 只读输入
+    long long *cur = malloc(sizeof(long long) * N);  // 工作牌堆
 
-    // 输入最终希望展示的顺序
     for (int i = 0; i < N; i++) {
-        scanf("%lld", &a[i]);
+        scanf("%lld", &src[i]);
     }
 
-    // 当前牌堆中有多少张牌
-    int size = 0;
+    int size = 0;  // cur 中当前牌堆大小
 
     // 从最后一张牌开始倒推
     for (int i = N - 1; i >= 0; i--) {
 
-        // 第一步：
-        // 把当前牌堆最后一张牌放到最前面
+        // 第一步：把 cur 中最后一张牌移到最前面
         if (size > 0) {
-            long long last = a[size - 1];
-
-            // 所有元素向后移动一格
+            long long last = cur[size - 1];
             for (int j = size - 1; j > 0; j--) {
-                a[j] = a[j - 1];
+                cur[j] = cur[j - 1];
             }
-
-            // 最后一张牌放到最前面
-            a[0] = last;
+            cur[0] = last;
         }
 
-        // 第二步：
-        // 把当前要展示的牌放到最前面
+        // 第二步：把 src[i] 放到最前面
         for (int j = size; j > 0; j--) {
-            a[j] = a[j - 1];
+            cur[j] = cur[j - 1];
         }
-
-        a[0] = a[i];
+        cur[0] = src[i];
 
         size++;
     }
 
-    // 输出洗牌后的顺序
     for (int i = 0; i < N; i++) {
-        if (i > 0) {
-            printf(" ");
-        }
-
-        printf("%lld", a[i]);
+        if (i > 0) printf(" ");
+        printf("%lld", cur[i]);
     }
-
     printf("\n");
 
+    free(src);
+    free(cur);
     return 0;
 }
