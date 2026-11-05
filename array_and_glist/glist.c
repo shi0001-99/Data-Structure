@@ -61,6 +61,7 @@ void printNode(Node *x,int d){
     printNode(hp,d);
     printTail(tp,d);
     printf(")");
+    d--;
 }
 
 void printTail(Node* x,int d){
