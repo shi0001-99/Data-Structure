@@ -91,3 +91,34 @@ int main() {
     free(res);
     return 0;
 }
+
+//------------------------------------------------------------------
+int* maxSlidingWindow(int* nums, int numsSize, int k, int* returnSize) {
+    int *result=(int *)malloc(sizeof(int)*(numsSize - k + 1));
+    int* deque = (int*)malloc(sizeof(int) * numsSize);
+    int head = 0;  // 队首指针
+    int tail = 0;  // 队尾指针（指向下一个空位）
+    int idx = 0;   // 结果数组下标
+
+    for (int i = 0; i < numsSize; i++) {
+        // 1. 队尾弹出所有比当前元素小的（它们不可能再成为最大值）
+        while (tail > head && nums[deque[tail - 1]] <= nums[i]) {
+            tail--;
+        }
+        // 当前元素下标入队
+        deque[tail++] = i;
+
+        // 2. 队首超出窗口范围则弹出
+        if (deque[head] <= i - k) {
+            head++;
+        }
+
+        // 3. 窗口形成后，队首就是当前窗口最大值
+        if (i >= k - 1) {
+            result[idx++] = nums[deque[head]];
+        }
+    }
+
+    *returnSize = idx;
+    return result;
+}
