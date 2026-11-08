@@ -105,3 +105,24 @@ int longestZigZag(node* root) {
     }
     return maxLen;
 }
+
+
+
+void dfs(Node* root, int* dp0, int* dp1) {
+    if (!root) {
+        *dp0 = 0;
+        *dp1 = 0;
+        return;
+    }
+    int l0, l1, r0, r1;
+    dfs(root->left, &l0, &l1);
+    dfs(root->right, &r0, &r1);
+    *dp0 = l1 + r1;
+    *dp1 = 1 + min(l0, l1) + min(r0, r1);
+}
+
+int cover_edges(Node *root) {
+    int dp0, dp1;
+    dfs(root, &dp0, &dp1);
+    return min(dp0, dp1);
+}
