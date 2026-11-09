@@ -1,7 +1,7 @@
+//算树中的最长路径
 #include <stdio.h>
 #include <stdlib.h>
 
-// 假设 node 结构体已定义
 typedef struct node {
     int val;
     struct node *leftchild, *rightchild;
@@ -19,19 +19,16 @@ int dfs(node* p) {
     if (p == NULL) {
         return 0;
     }
-
     // 递归计算左右子树的单边最大贡献
     // 如果子树贡献为负，则不如不走（取 0）
     int leftGain = MAX(0, dfs(p->leftchild));
     int rightGain = MAX(0, dfs(p->rightchild));
-
     // 计算经过当前结点的完整路径和（左单边 + 当前 + 右单边）
     // 这个路径可能成为全局最优解
     int currentPathSum = p->val + leftGain + rightGain;
     if (currentPathSum > maxSum) {
         maxSum = currentPathSum;
     }
-
     // 返回当前结点能提供给父节点的“单边”最大贡献
     // 只能选左或右中较大的一个
     return p->val + MAX(leftGain, rightGain);
@@ -44,12 +41,11 @@ int maxPathSum(node* root) {
     return maxSum;
 }
 
-
-
+//---------------------------------------------------------
+//算最长交错路径长度
 #include <stdio.h>
 #include <stdlib.h>
 
-// 假设结构体已经定义好
 typedef struct node {
     int val;
     struct node *leftchild, *rightchild;
@@ -82,7 +78,6 @@ void dfs(node* p, int* ret_left, int* ret_right) {
     } else {
         *ret_left = 0;
     }
-
     // 2. 计算当前结点第一步向右走的最大路径
     // 前提是有右孩子，且走到右孩子后，下一步必须向左走 (取 right_go_left)
     if (p->rightchild != NULL) {
@@ -90,7 +85,6 @@ void dfs(node* p, int* ret_left, int* ret_right) {
     } else {
         *ret_right = 0;
     }
-
     // 3. 更新全局最大值
     if (*ret_left > maxLen) maxLen = *ret_left;
     if (*ret_right > maxLen) maxLen = *ret_right;
@@ -107,7 +101,8 @@ int longestZigZag(node* root) {
 }
 
 
-
+//-----------------------------------------------------------
+//选与不选问题，求最少选多少节点使得所有边被覆盖
 void dfs(Node* root, int* dp0, int* dp1) {
     if (!root) {
         *dp0 = 0;
@@ -127,8 +122,49 @@ int cover_edges(Node *root) {
     return min(dp0, dp1);
 }
 
+//-----------------------------------------------------------
+//摄像头监控问题
 
+int min(int a, int b) {
+    return (a < b) ? a : b;
+}
 
+void dfs(struct TreeNode* root, int* need, int* safe, int* put) {
+    if (!root) {
+        *need = 0;
+        *safe = 0;
+        *put = 100000;//空节点不能安装摄像头
+        return;
+    }
+
+    int l_need, l_safe, l_put;
+    int r_need, r_safe, r_put;
+
+    // 后序遍历
+    dfs(root->left, &l_need, &l_safe, &l_put);
+    dfs(root->right, &r_need, &r_safe, &r_put);
+
+    // 状态一：当前节点安装摄像头，左右孩子无所谓什么状态
+    *put = 1 + min(l_need, min(l_safe, l_put)) + min(r_need, min(r_safe, r_put));
+
+    // 状态二：当前节点被孩子的摄像头监控，可以一边选一边不选，但是剩下的一边不能是need状态，因为当前节点没有摄像头
+    int case_a = l_put + min(r_safe, r_put);
+    int case_b = r_put + min(l_safe, l_put);
+    *safe = min(case_a, case_b);
+
+    // 状态三：当前节点需要父节点的摄像头监控，子节点都没有摄像头，且不是need状态，只能是safe状态
+    *need = l_safe + r_safe;
+}
+
+int minCameraCover(struct TreeNode* root) {
+    int root_need, root_safe, root_put;
+    dfs(root, &root_need, &root_safe, &root_put);
+    // 根节点没有父节点，因此不能处于 need 状态
+    return min(root_safe, root_put);
+}
+
+//-----------------------------------------------------------
+//把val替换成堂兄弟们的和
 void Q2(TreeNode* root) {
     if (root == NULL) return;
 
