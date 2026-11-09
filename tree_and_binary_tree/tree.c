@@ -126,3 +126,78 @@ int cover_edges(Node *root) {
     dfs(root, &dp0, &dp1);
     return min(dp0, dp1);
 }
+
+
+
+void Q2(TreeNode* root) {
+    if (root == NULL) return;
+
+    queue<TreeNode*> q;
+    vector<int> sum, cnt;
+
+    q.push(root);
+
+    // 第一次层序遍历：求每层结点值之和、结点个数
+    while (!q.empty()) {
+        int n = q.size();
+        int s = 0;
+
+        for (int i = 0; i < n; i++) {
+            TreeNode* p = q.front();
+            q.pop();
+
+            s += p->val;
+
+            if (p->left)
+                q.push(p->left);
+            if (p->right)
+                q.push(p->right);
+        }
+
+        sum.push_back(s);
+        cnt.push_back(n);
+    }
+
+    // 第二次层序遍历：修改结点值
+    q.push(root);
+    int level = 0;
+
+    while (!q.empty()) {
+        int n = q.size();
+
+        for (int i = 0; i < n; i++) {
+            TreeNode* p = q.front();
+            q.pop();
+
+            int t = 0, k = 0;
+
+            if (p->left) {
+                t += p->left->val;
+                k++;
+            }
+
+            if (p->right) {
+                t += p->right->val;
+                k++;
+            }
+
+            // 存在下一层，且孩子有堂兄弟
+            if (level + 1 < cnt.size() &&
+                cnt[level + 1] > k) {
+
+                if (p->left)
+                    p->left->val = sum[level + 1] - t;
+
+                if (p->right)
+                    p->right->val = sum[level + 1] - t;
+            }
+
+            if (p->left)
+                q.push(p->left);
+            if (p->right)
+                q.push(p->right);
+        }
+
+        level++;
+    }
+}
