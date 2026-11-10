@@ -54,3 +54,17 @@ void EnQ(int *A,int size,int x){
     A[size+1]=INT_MAX;
     DecreaseVal(A,size+1,size+1,x);
 }
+
+//---------------------------------------------------------
+//堆排序  时间复杂度O(n*logn) 空间复杂度O(n)
+/*给定长度为n的任意数组，建立最小堆
+  从最小堆中依次删除最小元素，并放入另一个数组中
+  获得的数组是一个从小到大依次排序的数组
+*/
+void HeapSort(int *A,int *Result,int size){
+    CreateQ(A,size);
+    for(int i=1;i<=size;i++){
+        Result[size-i+1]=DeQ(A,size-i+1);//从大到小，空间复杂度O(1)
+    }
+}
+
