@@ -68,3 +68,15 @@ void HeapSort(int *A,int *Result,int size){
     }
 }
 
+//构造最优前缀编码树
+void BuildHuffmanTree(char *C, int Size) {
+    PriorityQueue Q;
+    for (int i = 0; i < Size; ++i) 
+        EnQ(&Q, createTreeNode(C[i]));//构造一个堆
+    for (int i = 0; i < Size - 1; ++i){//只需要merge Size-1次
+        TreeNode *N = (TreeNode *) malloc(sizeof(TreeNode));
+        N->left = DeQ(&Q); N->right = DeQ(&Q); 
+        N->data = N->left->data + N->right->data
+        EnQ(&Q, N);
+    }
+}
