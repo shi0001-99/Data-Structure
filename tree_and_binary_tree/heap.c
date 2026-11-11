@@ -23,8 +23,8 @@ void MinHeapify(int *A,int size,int i){
 
 //创建最小堆  时间复杂度O(n)
 void CreateQ(int *A,int size){
-    for(int i=n/2;i>=1;i--){//i的孩子都是最小堆(叶子节点)
-        MinHeapify(int *A,int size,i);//O(h)
+    for(int i=size/2;i>=1;i--){//i的孩子都是最小堆(叶子节点)
+        MinHeapify(A,size,i);//O(h)
     }
 }
 //但是均摊时间复杂度是O(n),因为大量操作都是在底部完成的，此时的高度还不高
@@ -40,7 +40,7 @@ int DeQ(int *A,int size){
 
 //减少最小堆中元素的数值  时间复杂度O(h)
 void DecreaseVal(int *A,int i,int x){
-    assert(x<A[i]);
+    //assert(x<A[i]);
     A[i]=x;
     while(i>1 && A[i/2]>A[i]){
         int temp=A[i];
@@ -52,8 +52,8 @@ void DecreaseVal(int *A,int i,int x){
 
 //插入元素  时间复杂度O(h)
 void EnQ(int *A,int size,int x){
-    A[size+1]=INT_MAX;
-    DecreaseVal(A,size+1,size+1,x);
+    A[size+1]=INT_MAX;//#include <limits.h>
+    DecreaseVal(A,size+1,x);
 }
 
 //---------------------------------------------------------
