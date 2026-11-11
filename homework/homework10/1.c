@@ -67,7 +67,7 @@ int main(){
         int val=DeQ(a,curr);
         curr--;
 
-        EnQ(a,curr,val/2);
+        EnQ(a,curr,val-val/2);
         curr++;
     }
 
