@@ -12,7 +12,7 @@ typedef struct {
 Pair heap[N];
 int size = 0;
 
-int pre[N], next[N];
+int pre[N], next[N];//用数组模拟双向链表
 int a[N];
 char sex[N];
 int deleted[N];
@@ -70,7 +70,7 @@ Pair DeQ() {
     return ans;
 }
 
-// 将相邻且性别不同的两只小蓝鲸加入堆
+// 将相邻且 性别不同 的两只小蓝鲸加入堆
 void AddPair(int l, int r) {
     if (l == 0 || r == 0)
         return;
@@ -101,7 +101,7 @@ int main() {
     // 初始化双向链表
     for (int i = 1; i <= n; i++) {
         pre[i] = i - 1;
-        next[i] = (i == n ? 0 : i + 1);
+        next[i] = (i == n ? 0 : i + 1);//0代表访问不到
     }
 
     // 初始化小顶堆
@@ -109,7 +109,7 @@ int main() {
         AddPair(i, i + 1);
     }
 
-    int ansL[N], ansR[N];
+    int ansL[N], ansR[N];//储存配对的左右元素
     int count = 0;
 
     while (size > 0) {
@@ -119,10 +119,10 @@ int main() {
         int r = p.right;
 
         // 跳过已经失效的配对
-        if (deleted[l] || deleted[r])
+        if (deleted[l] || deleted[r])//已经配对过了
             continue;
 
-        if (next[l] != r)
+        if (next[l] != r)//已经不相邻了
             continue;
 
         // 记录答案
