@@ -7,7 +7,7 @@ int ls = 0, rs = 0;//元素个数
 
 // 大顶堆插入
 void PushMax(int x){
-    int i = ++ls;
+    int i = ++ls;//末尾位置
     while(i > 1 && L[i/2] < x){
         L[i] = L[i/2];
         i /= 2;
