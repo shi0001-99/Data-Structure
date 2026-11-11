@@ -70,7 +70,7 @@ Pair DeQ() {
     return ans;
 }
 
-// 将相邻且 性别不同 的两只小蓝鲸加入堆
+// 将 相邻 且 性别不同 的两只小蓝鲸加入堆
 void AddPair(int l, int r) {
     if (l == 0 || r == 0)
         return;
