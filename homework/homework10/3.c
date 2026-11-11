@@ -92,7 +92,7 @@ int main() {
     int n;
     scanf("%d", &n);
 
-    scanf("%s", sex + 1);
+    scanf("%s", sex + 1);//从下标1开始存储
 
     for (int i = 1; i <= n; i++) {
         scanf("%d", &a[i]);
