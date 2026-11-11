@@ -7,7 +7,7 @@ int ls = 0, rs = 0;//元素个数
 
 // 大顶堆插入
 void PushMax(int x){
-    int i = ++ls;//末尾位置
+    int i = ++ls;//x应该放置的位置
     while(i > 1 && L[i/2] < x){
         L[i] = L[i/2];
         i /= 2;
@@ -29,19 +29,20 @@ void PushMin(int x){
 int PopMax(){
     int ans = L[1];
     int x = L[ls--];
-    int i = 1, child;
+    int i = 1;
+    int child;
 
-    while(2*i <= ls){
+    while(2*i <= ls){//至少有孩子
         child = 2*i;
         if(child+1 <= ls && L[child+1] > L[child])
-            child++;
+            child++;//确定谁是max
 
         if(x >= L[child]) break;
 
         L[i] = L[child];
         i = child;
     }
-    if(ls > 0) L[i] = x;
+    if(ls > 0) L[i] = x;//如果ls==0的话，说明没有元素了
     return ans;
 }
 
