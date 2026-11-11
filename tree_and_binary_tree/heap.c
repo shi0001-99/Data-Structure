@@ -39,13 +39,14 @@ int DeQ(int *A,int size){
 }
 
 //减少最小堆中元素的数值  时间复杂度O(h)
-int DecreaseVal(int *A,int size,int i,int x){
+void DecreaseVal(int *A,int i,int x){
     assert(x<A[i]);
     A[i]=x;
     while(i>1 && A[i/2]>A[i]){
         int temp=A[i];
         A[i]=A[i/2];
         A[i/2]=temp;
+        i=i/2;
     }
 }
 
