@@ -29,7 +29,6 @@ void CreateQ(int *A,int size){
 }
 //但是均摊时间复杂度是O(n),因为大量操作都是在底部完成的，此时的高度还不高
 
-
 //删除最小元素  时间复杂度O(h)
 int DeQ(int *A,int size){
     int Min=A[i];
