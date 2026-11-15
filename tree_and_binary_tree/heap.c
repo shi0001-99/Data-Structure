@@ -80,3 +80,4 @@ void BuildHuffmanTree(char *C, int Size) {
         EnQ(&Q, N);
     }
 }
+
