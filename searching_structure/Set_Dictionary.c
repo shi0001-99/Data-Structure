@@ -97,6 +97,7 @@ TreeNode *Insert(TreeNode *N, TreeNode *New) {
     else N->right = Insert(N->right, New);
     return rebalance(N);//更新高度1+ max(left,right)，并据高度差进行旋转
 }
+
 //删除  O(logn)次旋转
 TreeNode *Delete(TreeNode *Root, TreeNode *N) {
     if (!Root) return NULL;
