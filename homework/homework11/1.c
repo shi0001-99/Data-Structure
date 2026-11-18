@@ -33,7 +33,7 @@ int isAVL(Node* root) {
     if (right_h == -1) return -1; // 右子树不平衡
     
     // 检查当前节点平衡因子
-    if (abs(left_h - right_h) > 1) return -1;
+    if (left_h - right_h > 1 ||left_h - right_h < -1) return -1;
     
     // 返回当前树的高度
     return (left_h > right_h ? left_h : right_h) + 1;
@@ -48,6 +48,7 @@ int main(){
     int c;
     scanf(" %d",&c);
     if(c==-1){
+        printf("yes\n");
         return 0;
     }
     Node* root=create(c);
