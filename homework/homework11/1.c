@@ -136,7 +136,7 @@ node* buildtree() {
     return root;
 }
 
-int balance(node* root) {//判断是不是平衡树
+int balance(node* root) {//判断是不是平衡树,不是的话返回-1,是的话返回高度
     if (!root)return 0;
     int left = balance(root->left);
     if (left == -1)return -1;
