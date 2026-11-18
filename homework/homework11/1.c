@@ -1,0 +1,59 @@
+#include<stdio.h>
+#include<stdlib.h>
+int main(){
+    int n;
+    scanf("%d",&n);
+    Node* q[10000];
+    int front=0,rear=0;
+    char c;
+    scanf(" %c",&c);
+    if(c=='n'){
+        return 0;
+    }
+    Node* root=create(c-'0');
+    q[rear++]=root;
+
+    while(front<rear){
+        Node* p=q[front++];
+        if(scanf(" %c",&c)!=1){
+            break;
+        }
+        if(c!='n'){
+            p->left=create(c-'0');
+            q[rear++]=p->left;
+        }
+
+        if (scanf(" %c", &c) != 1){
+            break;
+        }
+        if (c != 'n') {
+            p->right = create(c - '0');
+            q[rear++] = p->right;
+        }
+    }
+
+    int front=0,rear=0;
+    q[rear++]=root;
+    int first=1;
+    while(front<rear){
+        int sz=rear-front;
+        Node *last;
+        for(int i=0;i<sz;i++){
+            Node* curr=q[front++];
+            last=curr;
+            if(curr->left){
+                q[rear++]=curr->left;
+            }
+            if(curr->right){
+                q[rear++]=curr->right;
+            }
+        }
+        if(first){
+            printf("%d",last->data);
+            first=0;
+        }
+        else{
+            print(" %d",last->data);
+        }
+    }
+}
