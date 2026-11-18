@@ -136,7 +136,7 @@ node* buildtree() {
     return root;
 }
 
-int balance(node* root) {
+int balance(node* root) {//判断是不是平衡树
     if (!root)return 0;
     int left = balance(root->left);
     if (left == -1)return -1;
@@ -146,7 +146,7 @@ int balance(node* root) {
     return max(left, right) + 1;
 }
 
-int search(node* root, int* pre) {
+int search(node* root, int* pre) {//用中序遍历，判断是不是bst
     if (!root) return 1;
     if (!search(root->left, pre)) return 0;
     if (*pre > root->val) return 0;
