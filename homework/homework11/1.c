@@ -86,3 +86,82 @@ int main(){
     printf("yes\n");
     return 0;
 }
+
+//--------------------------------------------------------------
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <limits.h>
+
+typedef struct node {
+    int val;
+    struct node* left;
+    struct node* right;
+}node;
+
+int max(int a, int b) {
+    if (a > b)return a;
+    return b;
+}
+
+node* createnode(int val) {
+    node* n = (node*)malloc(sizeof(node));
+    n->val = val;
+    n->left = NULL;
+    n->right = NULL;
+    return n;
+}
+
+node* buildtree() {
+    int buf;
+    if (scanf("%d", &buf) != 1 || buf == -1)return NULL;
+    node* root = createnode(buf);
+    node* que[10000];
+    int head = 0, rear = 0;
+    que[rear++] = root;
+    while (head < rear) {
+        node* parent = que[head++];
+        if (scanf("%d", &buf) != 1)break;
+        if (buf != -1) {
+            parent->left = createnode(buf);
+            que[rear++] = parent->left;
+        }
+        if (scanf("%d", &buf) != 1)break;
+        if (buf != -1) {
+            parent->right = createnode(buf);
+            que[rear++] = parent->right;
+        }
+    }
+    return root;
+}
+
+int balance(node* root) {
+    if (!root)return 0;
+    int left = balance(root->left);
+    if (left == -1)return -1;
+    int right = balance(root->right);
+    if (right == -1)return -1;
+    if (left - right > 1 || left - right < -1)return -1;
+    return max(left, right) + 1;
+}
+
+int search(node* root, int* pre) {
+    if (!root) return 1;
+    if (!search(root->left, pre)) return 0;
+    if (*pre > root->val) return 0;
+    *pre = root->val;
+    if (!search(root->right, pre)) return 0;
+    return 1;
+}
+
+int main() {
+    int n;
+    scanf("%d", &n);
+    node* root = buildtree();
+    int pre = INT_MIN;
+    if (balance(root) == -1 || search(root, &pre) == 0) {
+        printf("no");
+    }
+    else printf("yes");
+}
