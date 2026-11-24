@@ -6,6 +6,7 @@
 2 5 6
 输出：6 5 3 2 2 1
 */
+
 #include<stdio.h>
 #include<stdlib.h>
 typedef struct Node {
