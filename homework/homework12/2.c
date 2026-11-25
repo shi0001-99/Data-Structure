@@ -399,9 +399,7 @@ TreeNode *buildTree(int m) {
     if (m == 0)
         return NULL;
 
-    TreeNode **nodes = (TreeNode **)malloc(
-        m * sizeof(TreeNode *)
-    );
+    TreeNode **nodes = (TreeNode **)malloc(m * sizeof(TreeNode *));
 
     /* 先创建所有节点并读取关键字 */
     for (int i = 0; i < m; i++) {
