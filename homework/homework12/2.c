@@ -275,7 +275,7 @@ void fixUnderflow(TreeNode **root, TreeNode *p) {
 
             /* 父节点可能继续出现下溢 */
             p = parent;
-        }
+        }    
     }
 
     /* 根节点调整 */
